@@ -19,19 +19,22 @@ def get_ftp_connection() -> FTP:
     return ftp_connection
 
 
-def download_file(file_name):
+def download_file(filename):
     ftp_connection = get_ftp_connection()
-    save_path = config["LOCAL"]["path"] + "/" + file_name
-    date_str = FILE_STRUCTURE[file_name]["date_str"]
-    compressed = FILE_STRUCTURE[file_name]["compressed"]
+    save_path = config["LOCAL"]["path"] + "/" + filename
+    date_str = FILE_STRUCTURE[filename]["date_str"]
+    compressed = FILE_STRUCTURE[filename]["compressed"]
     if date_str:
-        path = FILE_STRUCTURE[file_name]["path"].format(
+        path = FILE_STRUCTURE[filename]["path"].format(
             datetime.now().strftime("%d%m%Y")
         )
     else:
-        path = FILE_STRUCTURE[file_name]["path"]
+        path = FILE_STRUCTURE[filename]["path"]
 
     try:
+        logging.debug(
+            "downloading %s %s file\n", path, FILE_STRUCTURE[filename]["name"]
+        )
         if compressed:
             data = BytesIO()
             ftp_connection.retrbinary("RETR " + path, data.write)
@@ -42,13 +45,14 @@ def download_file(file_name):
         else:
             with open(save_path, "wb") as f:
                 ftp_connection.retrbinary("RETR " + path, f.write)
-        logging.debug("downloaded %s %s file", path, FILE_STRUCTURE[file_name]["name"])
+        logging.debug("downloaded %s %s file\n", path, FILE_STRUCTURE[filename]["name"])
     except Exception as exc:
-        logging.exception(
+        logging.error(
             "could not download %s file %s",
-            FILE_STRUCTURE[file_name]["name"],
-            file_name,
+            FILE_STRUCTURE[filename]["name"],
+            filename,
         )
+        print(f"could not download {FILE_STRUCTURE[filename]['name']} file {filename}")
         return
     else:
-        return file_name
+        return filename

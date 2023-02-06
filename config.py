@@ -5,7 +5,7 @@ FILE_STRUCTURE = {
         "compressed": False,
         "path": "/FaoCommon/Limit Files/ael_{0}.csv",
         "name": "Stock Exposure",
-        "time": ["08:00"],
+        "time": ["08:00", "14:00"],
     },
     "cn.csv": {
         "file_format": r"F_CN01_NSE_\d{8}.CSV",
