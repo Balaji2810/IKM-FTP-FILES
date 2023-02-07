@@ -2,6 +2,7 @@ FILE_STRUCTURE = {
     "stock_expo.csv": {
         "file_format": r"ael_\d{8}.csv",
         "date_str": True,
+        "date_format": "%d%m%Y",
         "compressed": False,
         "path": "/FaoCommon/Limit Files/ael_{0}.csv",
         "name": "Stock Exposure",
@@ -10,6 +11,7 @@ FILE_STRUCTURE = {
     "cn.csv": {
         "file_format": r"F_CN01_NSE_\d{8}.CSV",
         "date_str": True,
+        "date_format": "%d%m%Y",
         "compressed": True,
         "path": "/FaoCommon/MarketReports/F_CN01_NSE_{0}.CSV.gz",
         "name": "CN",
@@ -26,6 +28,7 @@ FILE_STRUCTURE = {
     "option_expo.csv": {
         "file_format": r"F_AEL_OTM_CONTRACTS_\d{8}.csv",
         "date_str": True,
+        "date_format": "%d%m%Y",
         "compressed": True,
         "path": "/FaoCommon/Limit Files/F_AEL_OTM_CONTRACTS_{0}.csv.gz",
         "name": "Option Exposure",
@@ -34,6 +37,7 @@ FILE_STRUCTURE = {
     "risk.spn": {
         "file_format": r"nsccl.\d{8}.i01.spn",
         "date_str": True,
+        "date_format": "%Y%m%d",
         "compressed": True,
         "path": "/FaoCommon/Parameter/nsccl.{0}.i01.spn.gz",
         "name": "Span",

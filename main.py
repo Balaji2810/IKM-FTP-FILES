@@ -21,7 +21,7 @@ def job(filename):
     if f_name is not None:
         print(f"{filename} downloaded--|")
         logging.info(f"{filename} downloaded--|")
-        # s3_upload.upload_to_s3(filename)
+        s3_upload.upload_to_s3(filename)
         print(f"{filename} uploaded to S3--|")
         logging.info(f"{filename} uploaded to S3--|")
         return True

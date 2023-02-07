@@ -26,7 +26,7 @@ def download_file(filename):
     compressed = FILE_STRUCTURE[filename]["compressed"]
     if date_str:
         path = FILE_STRUCTURE[filename]["path"].format(
-            datetime.now().strftime("%d%m%Y")
+            datetime.now().strftime(FILE_STRUCTURE[filename]["date_format"])
         )
     else:
         path = FILE_STRUCTURE[filename]["path"]
